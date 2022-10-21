@@ -1,0 +1,95 @@
+{% include 'header.html' %}
+{% for departamento in departamento %}
+{% for servicio_asociado in servicio_asociado %}
+
+<div class="container align-middle mb-0 bg-white">
+    <p class="fs-1 ">{{departamento[15] }}</p>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{departamento[7] }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{departamento[8] }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{departamento[9] }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div id="bajofotodepto">
+        <br>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Detalles del departamento
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Dormitorios en el inmueble: </strong> {{departamento[5] }}
+                        <br>
+                        <strong>Baños en el inmueble: </strong> {{departamento[4] }}
+                        <br>
+                        <strong>Valor arriendo por noche: $</strong> {{departamento[6] }}
+                        <br>
+                        <strong>Servicios asociados: </strong> {{servicio_asociado[1] }}
+                        <br>
+                        <br>
+                        <strong>El departamento se encuentra equipado con estos increbiles muebles</strong>
+                        <br>
+                        <br>
+                        {% for inventario in inventario %}
+                        <strong>Cuenta con: </strong> {{inventario[1]}}, <strong>de la marca:</strong>{{inventario[2]}} <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Direccion del departamento
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body fs-4">
+                        <strong>Dirección: </strong> {{departamento[1] }}
+                        <strong>Región: </strong> {{departamento[2] }}
+                        <strong>Comuna: </strong> {{departamento[3] }}
+                        <br>
+                        <div style="width: 100%"><iframe scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{departamento[16]}}+()&amp;t=h&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="600" frameborder="0"><a href="https://www.maps.ie/distance-area-calculator.html">area maps</a></iframe></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Accordion Item #3
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+
+|<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=America%2FSantiago&title=Turismo%20Real&src=ZGEzY2IyZDNhM2QxNDAwNDg2MWU4MjJlOGI1OTM2ZWQ4OGIyZDE3NmQ2YTBlMDM2ZjZiYTcyZjAxNDY2MWViY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239E69AF" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>|
+
+{% endfor %}
+<br>
+<br>
+<br>

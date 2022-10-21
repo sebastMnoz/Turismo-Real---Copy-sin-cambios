@@ -1,0 +1,82 @@
+{% include 'header.html' %}
+<br>
+<div class="card-body" id="login">
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 text-black">
+
+                    <div class="px-5 ms-xl-4">
+                        <i class="fa-solid fa-city fa-3x me-3 pt-5 mt-xl-4" style="color: #000000;"></i>
+                        <span class="h1 fw-bold mb-0" >Turismo Real </span>
+                    </div>
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                        <form style="width: 50rem;" method="post" action="/login" enctype="multipart/form-data">
+
+                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Iniciar sesion</h3>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtUsuario" id="txtUsuario"
+                                    class="form-control form-control-lg" placeholder="Usuario" minlength="3" required />
+                                <label class="form-label" for="floatingInput">Usuario</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="password" name="txtPasswordI" id="txtPasswordI"
+                                    class="form-control form-control-lg" placeholder="Contraseña" minlength="3"
+                                    required />
+                                <label class="form-label" for="floatingPassword">Contraseña</label>
+                            </div>
+
+                            <div class="pt-1 mb-4 text-center">
+                                <button id="botonInicio" class="btn btn-outline-primary btn-lg ">Iniciar
+                                    Sesion!</button>
+                            </div>
+                            <br>
+                            <p>No tienes cuenta? <a href="/registro" class="link-info">Registrate aqui</a></p>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6 px-0 d-none d-sm-block">
+                    <img src="https://media.traveler.es/photos/61376799bf63e581e0100ba0/master/w_1600,c_limit/159852.jpg"
+                        alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+                </div>
+            </div>
+        </div>
+        <div class="container" action="/login">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+            {% for category, message in messages %}
+
+            <script>
+
+                Swal.fire({
+                    icon: '{{category}}',
+                    text: '{{message}}',
+                })
+            </script>
+
+            {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+
+
+{% include 'footer.html' %}

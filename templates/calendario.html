@@ -1,0 +1,49 @@
+{% include 'header.html' %}
+
+<br>
+
+<body>
+    </head>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,timeGridDay"
+                },
+                
+                dateClick: function (info) {
+                    alert('Clicked on: ' + info.dateStr);
+                    click = ('Clicked on: ' + info.dateStr);
+                    // change the day's background color just for fun
+                    info.dayEl.style.backgroundColor = 'red';
+                    System.out.print(click); 
+                },
+
+                eventClick: function (info) {
+                    alert('Event: ' + info.event.title);
+
+                    // change the border color just for fun
+                    info.el.style.borderColor = 'red';
+                },
+                selectable: true,
+                selectHelper:true,
+                
+                locale: 'es',
+                initialView: 'dayGridMonth',
+                events: [{% for reserva_depto in reserva_depto %}{ title: '{{reserva_depto[2]}}', start: '{{reserva_depto[1]}}', end: '{{reserva_depto[2]}}', backgroundColor: 'red' }, {% endfor %}],
+            });
+        calendar.render();
+        });
+    </script>
+
+    <body>
+        {% for reserva_depto in reserva_depto %}{{reserva_depto[1]}} {{reserva_depto[2]}} {% endfor %}
+
+        <div id='calendar'></div>
+    </body>
+</body>

@@ -1,0 +1,116 @@
+{% include 'header_admin.html' %}
+<!-- Start your project here-->
+
+<!-- End your project here-->
+
+
+<title>Lista</title>
+<figure class="text-center">
+  <br>
+  <div class="col-t-9 p-3 ">
+    <h1>Empleados Registrados</h1>
+  </div>
+</figure>
+<div class="justify-content-md">
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/registro_empleados"><button id="btnRempleado" class="btn btn-outline-danger ">Registrar
+      empleado</button></a>
+  <a href="/listar_clientes"><button class="btn btn-outline-success">Lista de cliente</button></a>
+  <a href="/listar_empleados"><button id="btnLempleado" class="btn btn-outline-info">Lista de empleados</button></a>
+</div>
+<br>
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Numero celular</th>
+      <th>Direccion</th>
+      <th>Comuna</th>
+      <th>Region</th>
+      <th>Usuario</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for empleado in empleado %}
+    <tr>
+      <td>
+        <p class="fw-bold mb-1">{{empleado[1] }} {{empleado[2] }}</p>
+        <p class="text-muted mb-0">{{empleado[8] }}</p>
+        </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1"> {{empleado[3] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">+569 {{empleado[4] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{empleado[5] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{empleado[6] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{empleado[7] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{empleado[10] }}</p>
+      </td>
+      <td>
+        <a href="/editarEmp/{{empleado[0]}}" <i class="fa-solid fa-pen-to-square"></i></a>
+
+        <a href="/eliminarEmp/{{empleado[0]}}" <i class="fa-solid fa-eraser"></i></a>
+      </td>
+    </tr>
+
+    <div class="container" action="/eliminarEmp">
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+
+      {% for category, message in messages %}
+
+      <script>
+
+        Swal.fire({
+          icon: '{{category}}',
+          text: '{{message}}',
+        })
+      </script>
+
+      {% endfor %}
+
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="container" action="/editarEmp">
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+
+      {% for category, message in messages %}
+
+      <script>
+
+        Swal.fire({
+          icon: '{{category}}',
+          text: '{{message}}',
+        })
+      </script>
+
+      {% endfor %}
+
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    {% endfor %}
+  </tbody>
+</table>
+{% include 'footer.html' %}

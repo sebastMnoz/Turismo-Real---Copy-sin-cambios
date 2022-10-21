@@ -1,0 +1,113 @@
+{% include 'header.html' %}
+<br>
+
+
+<div class="card-body">
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 px-0 d-none d-sm-block">
+                    <img src="https://hips.hearstapps.com/hbu.h-cdn.co/assets/17/15/beach-town-color-valparaiso-chile.jpg?crop=1.00xw:0.751xh;0,0.0259xh&resize=1200:*"
+                        alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+                </div>
+
+                <div class="col-sm-6 text-black">
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                        <form style="width: 50rem;" method="post" action="/registrar_cliente"
+                            enctype="multipart/form-data">
+
+                            <figure class="text-center">
+                                <blockquote class="blockquote">
+                                    <p>¡Te damos la bienvenida a la familia Turismo Real!</p>
+                                </blockquote>
+                            
+                                <figcaption class="blockquote-footer">
+                                    Por favor, registrate <cite title="Source Title">para comenzar</cite>
+                                </figcaption>
+                            </figure>
+                            <br>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtNombre" id="txtNombre" class="form-control form-control-lg"
+                                    placeholder="Nombre" minlength="3" required />
+                                <label for="form-label" class="floatingInput">Nombre</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtApellido" id="txtApellido"
+                                    class="form-control form-control-lg" placeholder="Apellido" minlength="3"
+                                    required />
+                                <label for="form-label" class="floatingInput">Apellido</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtRut" id="txtRut" class="form-control form-control-lg"
+                                    placeholder="RUT" minlength="11" maxlength="12" required />
+                                <label for="form-label" class="floatingInput">RUT</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtNumero" id="txtNumero" class="form-control form-control-lg"
+                                    maxlength="8" minlength="8" placeholder="Numero celular" pattern=".{8,8}"
+                                    title="8 characters required" required
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                <label for="form-label" class="floatingInput">Numero celular</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="email" name="txtCorreo" id="txtCorreo" class="form-control form-control-lg"
+                                    placeholder="Correo Electronico" minlength="8" required />
+                                <label for="form-label" class="floatingInput">Correo electronico</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" name="txtUsuario" id="txtUsuario"
+                                    class="form-control form-control-lg" placeholder="Usuario" required />
+                                <label for="form-label" class="floatingInput">Usuario</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" name="txtPassword" id="txtPassword"
+                                    class="form-control form-control-lg" placeholder="Contraseña" required />
+                                <label for="form-label" class="floatingPassword">Contraseña</label>
+                            </div>
+                            <div class="pt-1 mb-4 text-center">
+                                <button id="botonRegistrar"
+                                    class="btn btn-outline-dark me-2 btn-lg btn-block text-center" type="submit"
+                                    value="registrar">Registrarse</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" action="/registrar_cliente">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+            {% for category, message in messages %}
+
+            <script>
+
+                Swal.fire({
+                    icon: '{{category}}',
+                    text: '{{message}}',
+                })
+            </script>
+
+            {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+{% include 'footer.html' %}

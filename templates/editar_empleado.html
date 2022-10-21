@@ -1,0 +1,119 @@
+{% include 'header_admin.html' %}
+{% for empleado in empleado %}
+
+<div>
+    <br>
+</div>
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <h3 class="fw-bold mb-3 pb-3 text-center" style="letter-spacing: 1px;">Modificar empleado</h3>
+    </blockquote>
+</figure>
+<div class="row container px-4 d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <div class="col-lg-12 ">
+        <h2 class="mb-3"></h2>
+        <form class="needs-validation" method="post" action="/updateEmp" enctype="multipart/form-data">
+            <div class="row g-2">
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" value="{{empleado[1]}}" class="form-control" name="txtNombre" id="txtNombre"
+                        placeholder="Nombre" minlength="3" maxlength="30" required>
+                    <label for="floatingInput" class="form-label">Nombre</label>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" value="{{empleado[2]}}" class="form-control" name="txtApellido" id="txtApellido"
+                        placeholder="" minlength="3" maxlength="30" required>
+                    <label for="floatingInput" class="form-label">Apellido</label>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12">
+
+                    <input type="text" value="{{empleado[3]}}" class="form-control" name="txtRut" id="txtRut"
+                        placeholder="you@example.com" minlength="11" maxlength="12" required>
+                    <label for="email" class="form-label">rut</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12">
+                    <input type="text" value="{{empleado[4]}}" class="form-control" name="txtNumero" id="txtNumero"
+                        maxlength="8" minlength="8" placeholder="Numero celular" pattern=".{8,8}"
+                        title="8 characters required" required
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="email" class="form-label">Numero telefonico </label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12">
+                    <input type="text" value="{{empleado[5]}}" class="form-control" name="txtDireccion"
+                        id="txtDireccion" minlength="8" maxlength="25" required>
+                    <label for="text" class="form-label">direccion</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+                <div class="form-floating col-12">
+
+                    <input type="text" value="{{empleado[6]}}" class="form-control" name="txtComuna" id="txtComuna"
+                        placeholder="" minlength="4" maxlength="25" required>
+                    <label for="text" class="form-label">Comuna</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+                <div class="form-floating col-12">
+                    <input type="text" value="{{empleado[7]}}" class="form-control" name="txtRegion" id="txtRegion"
+                        placeholder="" minlength="4" maxlength="25" required>
+                    <label for="text" class="form-label">Region</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12">
+
+                    <input type="email" value="{{empleado[8]}}" class="form-control" name="txtCorreo" id="txtCorreo"
+                        placeholder="" maxlength="30" required>
+                    <label for="email" class="form-label">Correo Electronico</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12">
+                    <input type="text" value="{{empleado[10]}}" class="form-control" name="txtUsuario" id="txtUsuario"
+                        minlength="4" maxlength="15" required>
+                    <label for="address" class="form-label">Usuario</label>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
+
+                <div class="form-floating col-12" hidden>
+
+                    <input type="text" value="{{empleado[11]}}" class="form-control" name="txtPassword" id="txtPassword"
+                        placeholder="Apartment or suite" minlength="4" maxlength="15" required>
+                    <label for="address2" class="form-label">Contraseña </label>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <input type="hidden" class="form-control" value="{{empleado[0]}}" name="txtID" id="txtID"
+                        placeholder="">
+                </div>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" value="Modificar">¡Modificar!</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endfor %}
+{% include 'footer.html' %}
