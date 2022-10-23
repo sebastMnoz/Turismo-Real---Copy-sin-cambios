@@ -1,0 +1,219 @@
+{% include 'header_admin.html' %}
+<br>
+<br>
+
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <h3 class="fw-bold mb-3 pb-3 text-center" style="letter-spacing: 1px;">Ingrese los datos del departamento</h3>
+    </blockquote>
+</figure>
+<div class="row container px-4 d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <div class="col-lg-12 ">
+        <h2 class="mb-3"></h2>
+        <form class="needs-validation" method="post" action="/registrar_departamento" enctype="multipart/form-data">
+            <div class="row g-2">
+
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtRegion" id="txtRegion" placeholder="" minlength="3"
+                        maxlength="30" required>
+                    <label for="floatingInput" class="form-label">Region</label>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtComuna" id="txtComuna" placeholder="" minlength="3"
+                        maxlength="30" required>
+                    <label for="floatingInput" class="form-label">Comuna</label>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+
+                
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="txtDireccion" id="txtDireccion"
+                        placeholder="Direccion" minlength="3" maxlength="30" required>
+                    <label for="floatingInput" class="form-label">Direccion del departamento</label>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+
+
+                <div class="input-group mb-3 mb-sm-1">
+                    <select class="form-select" id="txtdormitorios" name="txtdormitorios">
+                        <option selected> Cantidad de dormitorios</option>
+                        <option value="1">1 Dormitorio</option>
+                        <option value="2">2 Dormitorios</option>
+                        <option value="3">3 Dormitorios</option>
+                        <option value="4">4 Dormitorios</option>
+                        <option value="5">5 Dormitorios</option>
+                        <option value="6">6 Dormitorios</option>
+                        <option value="7">7 Dormitorios</option>
+                        <option value="8">8 Dormitorios</option>
+                        <option value="9">9 Dormitorios</option>
+                    </select>
+                    <span class="input-group-text"></span>
+                    <select class="form-select" id="txtBannos" name="txtBannos">
+                        <option selected> Cantidad de baños</option>
+                        <option value="1">1 baño</option>
+                        <option value="2">2 baños</option>
+                        <option value="3">3 baños</option>
+                        <option value="4">4 baños</option>
+                        <option value="5">5 baños</option>
+                        <option value="6">6 baños</option>
+                        <option value="7">7 baños</option>
+                        <option value="8">8 baños</option>
+                        <option value="9">9 baños</option>
+                    </select>
+                    <span class="input-group-text"></span>
+                    <select class="form-select" id="txtServicio" name="txtServicio">
+                        <option selected>Servios asociados</option>
+                        <option value="1">internet, cable, calefaccion</option>
+                        <option value="2">internet, cable</option>
+                        <option value="3">internet, calefaccion</option>
+                        <option value="4">cable, calefaccion</option>
+                        <option value="5">internet</option>
+                        <option value="6">calefaccion</option>
+                        <option value="7">cable</option>
+                        <option value="8"> No cuenta con servicios</option>
+                    </select>
+                </div>
+
+                <div></div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtFotografia1" id="txtFotografia1" maxlength="300"
+                        placeholder="" required>
+                    <label for="text" class="form-label">link Fotografia 1</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtFotografia2" id="txtFotografia2" maxlength="300"
+                        placeholder="" required>
+                    <label for="text" class="form-label">link Fotografia 2</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtFotografia3" id="txtFotografia3" maxlength="300"
+                        placeholder="" required>
+                    <label for="text" class="form-label">link Fotografia 3</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtFotografia4" id="txtFotografia4" maxlength="300"
+                        placeholder="" required>
+                    <label for="text" class="form-label">link Fotografia de la pagina de inicio</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="form-floating col-md-4 col-sm-4">
+                    <input type="text" class="form-control" name="txtnoche" id="txtnoche" placeholder="you@example.com"
+                        minlength="5" maxlength="6" required>
+                    <label for="int" class="form-label">Valor por noche</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-4 col-sm-4">
+
+                    <input type="text" class="form-control" name="txtdividendo" id="txtdividendo"
+                        placeholder="you@example.com" minlength="5" maxlength="6" required>
+                    <label for="int" class="form-label">Valor gasto dividendo</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="form-floating col-md-4 col-sm-4">
+
+                    <input type="text" class="form-control" name="txtcontribuciones" id="txtcontribuciones"
+                        placeholder="you@example.com" minlength="5" maxlength="6" required>
+                    <label for="int" class="form-label">valor contribuciones</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+                <div></div>
+                <div></div>
+                <div class="form-floating col-md-6 col-sm-6">
+
+                    <input type="text" class="form-control" name="txtweb" id="txtweb" placeholder="you@example.com"
+                        minlength="5" maxlength="6" required>
+                    <label for="text" class="form-label">Nombre en la pagina web</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+
+
+                <div class="form-floating col-md-6 col-sm-6">
+                    <input type="text" class="form-control" name="txtMapa" id="txtMapa" maxlength="50" placeholder=""
+                        required>
+                    <label for="text" class="form-label">Mapa</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+
+                <br>
+                <br>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" value="Modificar">Registrar departamento</button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" action="/registrar_cliente">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    {% for category, message in messages %}
+
+    <script>
+
+        Swal.fire({
+            icon: '{{category}}',
+            text: '{{message}}',
+        })
+    </script>
+
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+</div>
+
+</section>
+</div>
+
+
+{% include 'footer.html' %}
+
+
+
+
+
+
+

@@ -1,5 +1,66 @@
 {% include 'header_admin.html' %}
+<main class="container">
+    <br>
+    <div class="row mb-2">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.pinimg.com/originals/d5/80/ed/d580ede1aea1e4047d4bead48498ba90.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item active">
+                    <img src="https://i.pinimg.com/originals/d5/80/ed/d580ede1aea1e4047d4bead48498ba90.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item active">
+                    <img src="https://i.pinimg.com/originals/d5/80/ed/d580ede1aea1e4047d4bead48498ba90.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</main>
+<br>
+<div>
+<td>
 
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for departamento in departamento %}
+        <div class="col">
+            <div class="card">
+              <a href="/editar_depto/{{departamento[0]}}"> <img src="{{departamento[10] }}" width="100%" height="100%" class="card-img-top" alt="..."> </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{departamento[15] }}</h5>
+                    <p class="card-text">
+                        <strong>Dormitorios en el inmueble: </strong> {{departamento[5] }}
+                        <br>
+                        <strong>Baños en el inmueble: </strong> {{departamento[4] }}
+                        <br>
+                        <strong>Valor arriendo por noche: $</strong> {{departamento[6] }}
+                        <br>
+                    </tr>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</td>
+<br>
+<br>
+<br>
+
+</div>
 
 
 <div class="container" action="/login">

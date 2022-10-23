@@ -1,0 +1,530 @@
+{% include 'header.html' %}
+{% for departamento in departamento %}
+{% for servicio_asociado in servicio_asociado %}
+
+<div class="container align-middle mb-0 bg-white">
+    <p class="fs-1 ">{{departamento[15] }}</p>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{departamento[7] }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{departamento[8] }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{departamento[9] }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div id="bajofotodepto">
+        <br>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Detalles del departamento
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Dormitorios en el inmueble: </strong> {{departamento[5] }}
+                        <br>
+                        <strong>Baños en el inmueble: </strong> {{departamento[4] }}
+                        <br>
+                        <strong>Valor arriendo por noche: $</strong> {{departamento[6] }}
+                        <br>
+                        <strong>Servicios asociados: </strong> {{servicio_asociado[1] }}
+                        <br>
+                        <br>
+                        <strong>El departamento se encuentra equipado con estos increbiles muebles</strong>
+                        <br>
+                        <br>
+                        {% for inventario in inventario %}
+                        <strong>Cuenta con: </strong> {{inventario[1]}}, <strong>de la marca:</strong>{{inventario[2]}}
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Direccion del departamento
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body fs-4">
+                        <strong>Dirección: </strong> {{departamento[1] }}
+                        <strong>Región: </strong> {{departamento[2] }}
+                        <strong>Comuna: </strong> {{departamento[3] }}
+                        <br>
+                        <div style="width: 100%"><iframe scrolling="no" marginheight="0" marginwidth="0"
+                                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{departamento[16]}}+()&amp;t=h&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                width="100%" height="600" frameborder="0"><a
+                                    href="https://www.maps.ie/distance-area-calculator.html">area maps</a></iframe>
+                        </div>
+                        </h2>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Inventario
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body fs-4">
+
+
+                        <table class="table align-middle mb-0 bg-white">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Mueble o electrodomestico</th>
+                                    <th>Marca</th>
+                                    <th>Numero de serie</th>
+                                    <th>Valor</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for inventario in inventario %}
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold mb-1">{{inventario[1] }}</p>
+                    </div>
+                </div>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1"> {{inventario[2] }}</p>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{inventario[3] }}</p>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{inventario[4] }}</p>
+                </td>
+
+                <td>
+                    <a href="/editar_inventario/{{inventario[0]}}" <i class="fa-solid fa-pen-to-square"></i></a>
+
+                    <a href="/eliminar_inventario/{{inventario[0]}}" <i class="fa-solid fa-eraser"></i></a>
+                </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+                <div class="container" action="/eliminar">
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+
+                    {% for category, message in messages %}
+
+                    <script>
+
+                        Swal.fire({
+                            icon: '{{category}}',
+                            text: '{{message}}',
+                        })
+                    </script>
+
+                    {% endfor %}
+
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="container" action="/editar">
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+
+                    {% for category, message in messages %}
+
+                    <script>
+
+                        Swal.fire({
+                            icon: '{{category}}',
+                            text: '{{message}}',
+                        })
+                    </script>
+
+                    {% endfor %}
+
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                </table>
+
+                </h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                Agregar inventario
+            </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body fs-4">
+                </h2>
+            </div>
+
+            <div class="row container px-4 d-flex align-items-center">
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <h3 class="fw-bold mb-3 pb-3 text-center" style="letter-spacing: 1px;">Inventario</h3>
+                    </blockquote>
+                </figure>
+                <div class="col-lg-12 ">
+                    <h2 class="mb-3"></h2>
+                    <form class="needs-validation" method="post" action="/registrar_inventario"
+                        enctype="multipart/form-data">
+                        <div class="row g-2">
+
+                            <div class="form-floating col-md-6 col-sm-6">
+                                <input type="text" class="form-control" name="txtDesccripcion" id="txtDescripcion"
+                                    placeholder="Direccion" minlength="3" maxlength="30" required>
+                                <label for="floatingInput" class="form-label">Objecto</label>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+
+                            <div class="form-floating col-md-6 col-sm-6">
+                                <input type="text" class="form-control" name="txtMarca" id="txtMarca" placeholder=""
+                                    minlength="3" maxlength="30" required>
+                                <label for="floatingInput" class="form-label">Marca</label>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="form-floating col-md-6 col-sm-6">
+                                <input type="text" class="form-control" name="txtNro_serie" id="txtNro_serie"
+                                    placeholder="" minlength="5" maxlength="30" required>
+                                <label for="floatingInput" class="form-label">Nuemero de serie</label>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="form-floating col-md-6 col-sm-6">
+
+                                <input type="text" class="form-control" name="txtValor" id="txtValor"
+                                    placeholder="you@example.com" minlength="5" maxlength=6" required>
+                                <label for="int" class="form-label">valor</label>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-floating col-md-6 col-sm-6" style="display: none">
+                                {% for departamento in departamento %}
+                                <input type="text" value="{{departamento[0] }}" class="form-control" name="txtid_depto"
+                                    id="txtid_depto" placeholder="Direccion" minlength="3" maxlength="30" required>
+                                <label for="floatingInput" class="form-label">ID</label>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <br>
+                            <button class="w-100 btn btn-primary btn-lg" type="submit" value="Modificar">Registrar
+                                departamento</button>
+                            <br>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Editar pagina
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+
+            <div class="accordion-body fs-4">
+            </div>
+
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <h3 class="fw-bold mb-3 pb-3 text-center" style="letter-spacing: 1px;">Editar departamento</h3>
+                    </blockquote>
+                </figure>
+                <div
+                    class="row container px-4 d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                    <div class="col-lg-12 ">
+                        <h2 class="mb-3"></h2>
+                        <form class="needs-validation" method="post" action="/update_depto"
+                            enctype="multipart/form-data">
+                            <div class="row g-2">
+                                {% for departamento in departamento %}
+                                <div class="form-floating col-md-6 col-sm-6" style="display: none">
+                                    <input type="text" value="{{departamento[0]}}" class="form-control" name="txtID"
+                                        id="txtID" placeholder="Direccion" minlength="3" maxlength="30" required>
+                                    <label for="floatingInput" class="form-label">ID</label>
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[2]}}" class="form-control" name="txtRegion"
+                                        id="txtRegion" placeholder="" minlength="3" maxlength="30" required>
+                                    <label for="floatingInput" class="form-label">Region</label>
+                                    <div class="invalid-feedback">
+                                        Valid last name is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[3]}}" class="form-control" name="txtComuna"
+                                        id="txtComuna" placeholder="" minlength="3" maxlength="30" required>
+                                    <label for="floatingInput" class="form-label">Comuna</label>
+                                    <div class="invalid-feedback">
+                                        Valid last name is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" value="{{departamento[1]}}" class="form-control"
+                                        name="txtDireccion" id="txtDireccion" placeholder="Direccion" minlength="3"
+                                        maxlength="30" required>
+                                    <label for="floatingInput" class="form-label">Direccion del departamento</label>
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+
+                                <div></div>
+
+                                <div class="input-group mb-3">
+                                    <select class="form-select" id="txtBannos" name="txtBannos">
+                                        <option selected value="{{departamento[4]}}">Cantidad de dormitorios</option>
+                                        <option value="1">1 Dormitorio</option>
+                                        <option value="2">2 Dormitorios</option>
+                                        <option value="3">3 Dormitorios</option>
+                                        <option value="4">4 Dormitorios</option>
+                                        <option value="5">5 Dormitorios</option>
+                                        <option value="6">6 Dormitorios</option>
+                                        <option value="7">7 Dormitorios</option>
+                                        <option value="8">8 Dormitorios</option>
+                                        <option value="9">9 Dormitorios</option>
+                                    </select>
+                                    <span class="input-group-text"> </span>
+                                    <select class="form-select" id="txtdormitorios" name="txtdormitorios">
+                                        <option selected value="{{departamento[5]}}">Cantidad de baños</option>
+                                        <option value="1">1 baño</option>
+                                        <option value="2">2 baños</option>
+                                        <option value="3">3 baños</option>
+                                        <option value="4">4 baños</option>
+                                        <option value="5">5 baños</option>
+                                        <option value="6">6 baños</option>
+                                        <option value="7">7 baños</option>
+                                        <option value="8">8 baños</option>
+                                        <option value="9">9 baños</option>
+                                    </select>
+                                    <span class="input-group-text"> </span>
+                                    <select class="form-select" id="txtServicio" name="txtServicio">
+                                        <option selected value="{{departamento[13]}}">Servios asociados</option>
+                                        <option value="1">internet, cable, calefaccion</option>
+                                        <option value="2">internet, cable</option>
+                                        <option value="3">internet, calefaccion</option>
+                                        <option value="4">cable, calefaccion</option>
+                                        <option value="5">internet</option>
+                                        <option value="6">calefaccion</option>
+                                        <option value="7">cable</option>
+                                        <option value="8"> No cuenta con servicios</option>
+                                    </select>
+                                </div>
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[7]}}" class="form-control"
+                                        name="txtFotografia1" id="txtFotografia1" maxlength="300" placeholder=""
+                                        required>
+                                    <label for="text" class="form-label">Fotografia 1</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[8]}}" class="form-control"
+                                        name="txtFotografia2" id="txtFotografia2" maxlength="300" placeholder=""
+                                        required>
+                                    <label for="text" class="form-label">Fotografia 2</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[9]}}" class="form-control"
+                                        name="txtFotografia3" id="txtFotografia3" maxlength="300" placeholder=""
+                                        required>
+                                    <label for="text" class="form-label">Fotografia 3</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[10]}}" class="form-control"
+                                        name="txtFotografia4" id="txtFotografia4" maxlength="300" placeholder=""
+                                        required>
+                                    <label for="text" class="form-label">Fotografia de la pagina principal</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div></div>
+                                <div></div>
+                                <div class="form-floating col-md-4 col-sm-4">
+
+                                    <input type="text" value="{{departamento[6]}}" class="form-control" name="txtnoche"
+                                        id="txtnoche" placeholder="you@example.com" minlength="5" maxlength="6"
+                                        required>
+                                    <label for="int" class="form-label">Valor por noche</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-4 col-sm-4">
+
+                                    <input type="text" value="{{departamento[11]}}" class="form-control"
+                                        name="txtdividendo" id="txtdividendo" placeholder="you@example.com"
+                                        minlength="5" maxlength="6" required>
+                                    <label for="int" class="form-label">Valor gasto dividendo</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating col-md-4 col-sm-4">
+
+                                    <input type="text" value="{{departamento[12]}}" class="form-control"
+                                        name="txtcontribuciones" id="txtcontribuciones" placeholder="you@example.com"
+                                        minlength="5" maxlength="6" required>
+                                    <label for="int" class="form-label">valor contribuciones</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+                                <div></div>
+
+                                <div class="form-floating col-md-6 col-sm-6">
+
+                                    <input type="text" value="{{departamento[15]}}" class="form-control" name="txtweb"
+                                        id="txtweb" placeholder="you@example.com" minlength="5" maxlength="6" required>
+                                    <label for="text" class="form-label">Nombre pagina web</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-6 col-sm-6">
+                                    <input type="text" value="{{departamento[16]}}" class="form-control" name="txtMapa"
+                                        id="txtMapa" maxlength="50" placeholder="" required>
+                                    <label for="text" class="form-label">Mapa</label>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+
+                                <br>
+                                <br>
+                                <button class="w-100 btn btn-primary btn-lg" type="submit" value="Modificar">Modifciar
+                                    departamento</button>
+                                <br>
+                                <button class="w-100 btn btn-primary btn-lg" type="submit" value="Modificar">Eliminar departamento</button>
+                                <a href="/eliminarDepto/{{departamento[0]}}" <i class="Button"></i></a>
+                                <br>
+
+                            </div>
+                        </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<br>
+
+
+<div class="container" action="/registrar_cliente">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    {% for category, message in messages %}
+
+    <script>
+
+        Swal.fire({
+            icon: '{{category}}',
+            text: '{{message}}',
+        })
+    </script>
+
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+</div>
+
+</section>
+
+
+</div>
+
+
+{% include 'footer.html' %}

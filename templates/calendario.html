@@ -11,32 +11,32 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
-                left: "prev,next today",
-                center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay"
+                    left: "prev,next today",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay"
                 },
-                
-                dateClick: function (info) {
-                    alert('Clicked on: ' + info.dateStr);
-                    click = ('Clicked on: ' + info.dateStr);
-                    // change the day's background color just for fun
-                    info.dayEl.style.backgroundColor = 'red';
-                    System.out.print(click); 
+                select: function (info) {
+                    alert('selected ' + info.startStr + ' to ' + info.endStr);
                 },
-
-                eventClick: function (info) {
-                    alert('Event: ' + info.event.title);
-
-                    // change the border color just for fun
-                    info.el.style.borderColor = 'red';
-                },
-                selectable: true,
-                selectHelper:true,
-                
-                locale: 'es',
-                initialView: 'dayGridMonth',
                 events: [{% for reserva_depto in reserva_depto %}{ title: '{{reserva_depto[2]}}', start: '{{reserva_depto[1]}}', end: '{{reserva_depto[2]}}', backgroundColor: 'red' }, {% endfor %}],
+            selectable: true,
+            selectHelper: true,
+            locale: 'es',
+            initialView: 'dayGridMonth',
+            select: function (start, end, allDay, info) {
+                var title = prompt("titutlox");
+                if (title) {
+                    var start = fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                    var end = fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+
+                    events:[{title: info.startStr, start: start, end: info.endStr } ]
+                    
+                    
+                }
+
+            }
             });
+
         calendar.render();
         });
     </script>

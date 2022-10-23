@@ -1,11 +1,10 @@
 {% include 'header_admin.html' %}
 
-
 <title>Lista</title>
 <figure class="text-center">
   <br>
   <div class="col-t-9 p-3 ">
-    <h1>Clientes registrados</h1>
+    <h1>Inventario</h1>
   </div>
 </figure>
 
@@ -15,48 +14,6 @@
   <a href="/listar_empleados"><button id="btnLempleado" class="btn btn-outline-info">Lista de empleados</button></a>
 </div>
 <br>
-
-<table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Numero celular</th>
-      <th>Usuario</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for cliente in cliente %}
-    <tr>
-      <td>
-        <p class="fw-bold mb-1">{{cliente[1] }} {{cliente[2] }}</p>
-        <p class="text-muted mb-0">{{cliente[5] }}</p>
-        </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1"> {{cliente[3] }}</p>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">+569 {{cliente[4] }}</p>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">{{cliente[8] }}</p>
-      </td>
-
-      <td>
-        <a href="/editar/{{cliente[0]}}" <i class="fa-solid fa-pen-to-square"></i></a>
-
-
-
-        <a href="/eliminar/{{cliente[0]}}" <i class="fa-solid fa-eraser"></i></a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-
-  <div class="container" action="/eliminar">
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -100,3 +57,4 @@
 </table>
 
 {% include 'footer.html' %}
+
